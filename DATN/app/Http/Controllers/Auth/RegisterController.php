@@ -21,6 +21,5 @@ class RegisterController extends Controller
             return redirect()->intended('login');
         } 
         return redirect()->intended('register');
-        
     }
 }
