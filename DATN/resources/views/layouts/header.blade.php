@@ -3,8 +3,8 @@
 <head>
       <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+      <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
         integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +16,7 @@
       <nav class="navbar navbar-expand-xl navbar-togglable fixed-top navbar-dark" id ="0">
             <div class="container-xl">
                   <a class="navbar-brand" href="/">
-                  <img src="./assets/img/logo.png" width="70px">
+                  <img src="/assets/img/logo.png" width="70px">
                   </a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -106,11 +106,38 @@
                                           </a>
                                     @endif
                               </li>
-                              <li class="nav-item">
-                                    <a href="" class="nav-link" data-bs-toggle="offcanvas">
-                                          <i class="fas fa-shopping-cart"></i> GIỎ HÀNG
-                                    </a>
-                              </li>
+                              <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <div class="row total-header-section">
+                                                <div class="col-lg-6 col-sm-6 col-6">
+                                                      <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                                </div>
+                                                @php $total = 0 @endphp
+                                                @foreach((array) session('cart') as $id => $details)
+                                                      @php $total += $details['price'] * $details['quantity'] @endphp
+                                                @endforeach
+                                                <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                                                      <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                                                </div>
+                                          </div>
+                                          @if(session('cart'))
+                                                @foreach(session('cart') as $id => $details)
+                                                      <div class="row cart-detail">
+                                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                                                  <img src="{{ $details['image'] }}" />
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                                                  <p>{{ $details['name'] }}</p>
+                                                                  <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                                            </div>
+                                                      </div>
+                                                @endforeach
+                                          @endif
+                                    </div>
+                              </div>
                         </ul>
                   </div>
             </div>

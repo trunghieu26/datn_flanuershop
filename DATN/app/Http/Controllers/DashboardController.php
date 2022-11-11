@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index (Request $request, Product $product) {
-        $products = Product::all()->sortBy(['created_at','desc']);
+        $products = Product::all()->sortBy(['created_at','desc'])->take(3);
         //$name = session()->get('name');
         return view("welcome",compact('products'));
     }

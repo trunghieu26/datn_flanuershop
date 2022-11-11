@@ -41,7 +41,7 @@
                 <div class="row">
                     @foreach ($products as $product)
                         <div class="col-md-4">
-                            <a href="app.html" class="card border-0 mb-3 mb-md-0">
+                            <a href="cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
                                     <div class="card-img-top" style="width: 350px, height :450px">
                                         <img src="/image/{{$product->image}}" alt="App landing" class="img-fluid new-products">
                                     </div>
@@ -187,18 +187,19 @@
                     </div>
                     <div class="col-md-4">
                         <div class="text-center">
-                                <div class="text-primary">
-                                    <a href="#">
-                                    <i class="fab fa-github fa-2x" ></i>
-                                </a>
-                                </div>
-                                    <h4 class="text-white mb-3">
-                                    Free support
-                                    </h4>
-                                    <p class="text-white text-muted mb-0">
-                                    Feel free to contact us with any feature requests or bug reports.
-                                    </p>
+                            <div class="text-primary">
+                                <a href="#">
+                                <i class="fab fa-github fa-2x" ></i>
+                            </a>
                             </div>
+                                <h4 class="text-white mb-3">
+                                Free support
+                                </h4>
+                                <p class="text-white text-muted mb-0">
+                                Feel free to contact us with any feature requests or bug reports.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </div>
@@ -213,7 +214,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 offset-lg-1 order-md-1" style="text-align: center;">
                         <h2 class="mb-4">
-                                Intuitive workflow
+                            Intuitive workflow
                         </h2>
                         <ul class="list-iconed text-muted">
                             <li class="list-iconed-item">

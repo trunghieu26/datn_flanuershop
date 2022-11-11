@@ -15,6 +15,8 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resident\ProfileController;
+use App\Http\Controllers\Resident\CartProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,10 @@ Route::middleware(['web'])->group(function () {
     Route::post('register',[RegisterController::class,'store']);
     Route::get('login',[LoginController::class,'index']);
     Route::post('login',[LoginController::class,'login']);
+    Route::get('/cart/{id}', [CartProductController::class, 'index']);
+    Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart']);
+    Route::patch('update-cart', [CartProductController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove.from.cart');
     Route::get('/',[DashboardController::class,'index']);
     Route::get('/profile',[ProfileController::class,'index']);
     Route::get('logout',[LoginController::class,'logout']);
