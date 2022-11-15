@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resident;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Order_item;
 use Illuminate\Http\Request;
 
 class CartProductController extends Controller
@@ -13,21 +14,21 @@ class CartProductController extends Controller
         return view('resident.cart', compact('products'));
     }
 
-    public function addToCart($id) {
+    public function addToCart($id, Request $request) {
         $products = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+        $input = new Order_item();
+        $input->product_id = $id;
+        $input->quantity = $request->quantity;
+        $input->amount = $request->amount;
+        if (!$products) return $this->sendError('Product does not exist');
+        
+        $order = Order_item::where('product_id', $id)->first();
+        if ($order == null) {
+            //$input->save();
         } else {
-            $cart[$id] = [
-                "name" => $products->name,
-                "quantity" => 1,
-                "price" => $products->price,
-                "image" => $products->image
-            ];
+            //dd(123);
         }
-        session()->put('cart', $cart);
+
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
     public function update(Request $request)
@@ -39,7 +40,6 @@ class CartProductController extends Controller
             session()->flash('success', 'Cart updated successfully');
         }
     }
-  
     /**
      * Write code on Method
      *

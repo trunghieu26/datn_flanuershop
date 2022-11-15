@@ -1027,3 +1027,11 @@ input:focus {
     margin:10px 0px;
     box-shadow:none !important;
 }
+.navbar-dark>.container-xl:after {
+    content: '';
+    position: absolute;
+    bottom: -1.25rem;
+    left: 0;
+    right: 0;
+    border-top: 1px solid rgba(255,255,255,.1) !important;
+}

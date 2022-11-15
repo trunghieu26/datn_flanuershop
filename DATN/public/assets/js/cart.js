@@ -1,3 +1,9 @@
+$(".add-to-cart").on('click', function() {
+    let quantity = $('#form1').val();
+    console.log(132);
+})
+
+
 $(".update-cart").change(function (e) {
     e.preventDefault();
 
