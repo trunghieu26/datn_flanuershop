@@ -29,7 +29,7 @@
         <section class="section" id="pages">
             <div class="container-xl">
                 <div class="row justify-content-center">
-                        <div class="col-md-8 col-lg-6">
+                    <div class="col-md-8 col-lg-6">
                         <h2 class="text-center mb-4">
                             SẢN PHẨM MỚI
                         </h2>
@@ -40,8 +40,8 @@
                 </div>
                 <div class="row">
                     @foreach ($products as $product)
-                        <div class="col-md-4">
-                            <a href="cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
+                        <div class="col-md-4" data-group="{{$product->catalog_id}}">
+                            <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
                                     <div class="card-img-top" style="width: 350px, height :450px">
                                         <img src="/image/{{$product->image}}" alt="App landing" class="img-fluid new-products">
                                     </div>

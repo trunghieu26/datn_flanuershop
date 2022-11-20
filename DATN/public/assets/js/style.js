@@ -20,3 +20,4 @@ $(".view_products").click(function() {
         scrollTop: $(".card-img-top").offset().top
     }, 150);
 });
+

@@ -46,15 +46,22 @@
                               </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                              <div class="subnav">
-                                    <button class="subnavbtn"> NAM <i class="fa fa-caret-down"></i></button>
-                                    <div class="subnav-content">
-                                          <a href="#link1" class="dropdown-navbar">ÁO NAM</a>
-                                          <a href="#link1" class="dropdown-navbar">QUẦN NAM</a>
-                                          <a href="#link1" class="dropdown-navbar">STREET STYLE</a>
-                                          <a href="#link1" class="dropdown-navbar">CÔNG SỞ</a>
-                                    </div>
-                              </div>
+                              <li class="nav-item dropdown">
+                                    <a  class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                         NAM
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarWelcome">
+                                    <a class="dropdown-item" href="index.html">
+                                          ÁO NAM
+                                    </a>
+                                    <a class="dropdown-item " href="index-header-carousel.html">
+                                          QUẦN NAM
+                                    </a>
+                                    <a class="dropdown-item " href="index-header-parallax.html">
+                                          CÔNG SỞ
+                                    </a>
+                                </div>
+                              </li>
                               <div class="subnav">
                                     <button class="subnavbtn"> NỮ <i class="fa fa-caret-down"></i></button>
                                     <div class="subnav-content" >

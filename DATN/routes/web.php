@@ -36,8 +36,8 @@ Route::middleware(['web'])->group(function () {
     Route::post('register',[RegisterController::class,'store']);
     Route::get('login',[LoginController::class,'index']);
     Route::post('login',[LoginController::class,'login']);
-    Route::get('/cart/{id}', [CartProductController::class, 'index']);
-    Route::get('add-to-cart/{id}', [CartProductController::class, 'addToCart']);
+    Route::get('/add-to-cart/{id}', [CartProductController::class, 'index']);
+    Route::post('/add-to-cart/{id}',[CartProductController::class, 'addToCart']);
     Route::patch('update-cart', [CartProductController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove.from.cart');
     Route::get('/',[DashboardController::class,'index']);

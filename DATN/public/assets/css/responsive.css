@@ -42,24 +42,12 @@
 	.justify-content-center {
 		text-align: unset; ;
 	}
-	.col-md-8 {
-		flex: 0 0 66.6666666667%;
-		max-width: 66.6666666667%;
-	}
-	.col-md-6 {
-		flex: 0 0 50%;
-		max-width: 50%;
-	}
-	.login_with {
-		max-width: 40% !important;
-	}
 }
 @media only screen and  (min-width: 992px) {
 	.col-lg-5 {
 	    -webkit-box-flex: 0;
 	    flex: 0 0 41.66667%;
 	    max-width: 41.66667%;
-		height: 100% !important;
 	}
 }
 @media only screen and  (min-width: 1200px) {
@@ -71,7 +59,7 @@
 		display: block;
 	}
 }
-  @media (min-width: 1400px) {
+@media (min-width: 1400px) {
 	.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
 	  	max-width: 1200px !important;
 	}

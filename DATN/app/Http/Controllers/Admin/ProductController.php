@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -93,6 +94,6 @@ class ProductController extends Controller
         $product->delete();
      
         return redirect()->route('products.index')
-                        ->with('success','Product deleted successfully');
+                ->with('success','Product deleted successfully');
     }
 }
