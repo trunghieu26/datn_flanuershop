@@ -42,7 +42,7 @@ Route::middleware(['web'])->group(function () {
     Route::delete('remove-from-cart', [CartProductController::class, 'remove'])->name('remove.from.cart');
     Route::get('/',[DashboardController::class,'index']);
     Route::get('/profile',[ProfileController::class,'index']);
-    Route::get('logout',[LoginController::class,'logout']);
+    Route::get('/logout',[LoginController::class,'logout']);
 });
 Route::get('contact', [ContactController::class,'index'])->name('contact');
 Route::get('forgotpassword', [AuthController::class,'forgotPassword'])->name('forgotpassword');
@@ -50,6 +50,7 @@ Route::get('forgotpassword', [AuthController::class,'forgotPassword'])->name('fo
 //Admin route
 Route::group(['prefix' => 'admin'], function() {   
     // Dash
+    Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/login', [HomeController::class,'index'])->name('admin.index');
     Route::get('/', [HomeController::class,'index'])->name('admin.index');
     Route::resource('products',ProductController::class);

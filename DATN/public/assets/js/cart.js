@@ -23,41 +23,46 @@ $( document ).ready(function() {
         })
     })
     
+    // $(".remove-from-cart").click(function (e) {
+    //     e.preventDefault();
     
-    $(".update-cart").change(function (e) {
-        e.preventDefault();
-        var ele = $(this);
+    //     var ele = $(this);
+    
+    //     if(confirm("Are you sure want to remove?")) {
+    //         $.ajax({
+    //             url: '/remove-from-cart',
+    //             method: "DELETE",
+    //             data: {
+    //                 _token: '{{ csrf_token() }}', 
+    //                 id: ele.parents("tr").attr("data-id")
+    //             },
+    //             success: function (response) {
+    //                 window.location.reload();
+    //             }
+    //         });
+    //     }
+    // });
+
+    $('.login-modal').on('click', function () {
+        let email = $('.email').val();
+        let password = $('.password').val();
+        let csrf_token = $(".form_login_modal").attr('alt');
         $.ajax({
-            url: '/update-cart',
-            method: "patch",
-            data: {
-                _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("data-id"), 
-                quantity: ele.parents("tr").find(".quantity").val()
+            url : '/login',
+            method: "POST",
+            dataType:'json',
+            data : {
+                email : email,
+                password : password,
+                _token : csrf_token
             },
-            success: function (response) {
-               window.location.reload();
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            },
+            error: function (data) {
+                console.log('Error:', data);
             }
-        });
-    });
-    
-    $(".remove-from-cart").click(function (e) {
-        e.preventDefault();
-    
-        var ele = $(this);
-    
-        if(confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '/remove-from-cart',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
-    });
+        })
+    })
 });

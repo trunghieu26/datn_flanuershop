@@ -21,6 +21,7 @@
 	.col-md-6 {
     	-webkit-box-flex: 0;
     	flex: 0 0 50%;
+		width: 40% !important;
     }
     .col-md-4 {
     	-webkit-box-flex: 0;
@@ -57,6 +58,9 @@
   	}
   	.nav-item-divider {
 		display: block;
+	}
+	.navbar-expand-xl .navbar-nav .dropdown-menu {
+		margin-top: 50px;
 	}
 }
 @media (min-width: 1400px) {

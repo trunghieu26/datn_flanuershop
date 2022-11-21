@@ -727,10 +727,7 @@ input:focus {
     text-transform: uppercase;
     background: #212121;
 }
-::placeholder { /* chạy tốt trên Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white !important;
-    opacity: 1; /* Firefox */
-}
+
 .select_box {
 	background-color: #fff;
 	color: white;
@@ -911,7 +908,20 @@ input:focus {
 	.add-to-cart:hover, .like:hover {
 		background: #b36800;
 		color: #fff; }
-  
+	.add-card-login:hover {
+		background: #ff9f1a;
+		color: #fff; 
+	}
+	.add-card-login {
+		background: #ff9f1a;
+		padding: 1.2em 1.5em;
+		border: none;
+		text-transform: UPPERCASE;
+		font-weight: bold;
+		color: #fff;
+		-webkit-transition: background .3s ease;
+				transition: background .3s ease;
+	}
   .not-available {
 	text-align: center;
 	line-height: 2em; }
@@ -1042,4 +1052,20 @@ input:focus {
 }
 .form-addcart {
 	display: flex;
+}
+.action button:hover {
+	background-color: #ff9f1a;
+	color: #000;
+}
+
+.modal-backdrop.show {
+    display: none !important;
+    opacity: 0 !important;
+}
+.email::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: black;
+	opacity: 1; /* Firefox */
+}
+.password::placeholder {
+	color: #000;
 }

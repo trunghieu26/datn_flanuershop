@@ -43,7 +43,7 @@
                         <div class="col-md-4" data-group="{{$product->catalog_id}}">
                             <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
                                     <div class="card-img-top" style="width: 350px, height :450px">
-                                        <img src="/image/{{$product->image}}" alt="App landing" class="img-fluid new-products">
+                                        <img src="/image/{{$product->image}}" alt="App landing" style="white-space: 100%, height: 100%" class="img-fluid new-products">
                                     </div>
                                     <div class="card-body">
                                     <h4 class="card-title">

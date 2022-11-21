@@ -24,7 +24,7 @@ class CartProductController extends Controller
             $input_new['product_id'] = $input['product_id'];
             $input_new['quantity'] = $order['quantity'] + $input['quantity'];
             $input_new['amount'] = $order['amount'] + $input['amount']*$input['quantity'];
-           Order_item::updateOrCreate($input_new);
+            Order_item::where('product_id', $id)->update($input_new);
         }
     }
     // public function update(Request $request)

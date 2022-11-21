@@ -36,6 +36,9 @@
                     <div class="formGroup forgot_password">
                         <a href="/forgotpassword" class="text forgot_password_text">Quên mật khẩu ?</a>
                     </div>
+                    <div class="formGroup forgot_password">
+                        <span class="text">Bạn chưa có tài khoản ? <a href="/register">ĐĂNG KÝ</a> tại đây</span>
+                    </div>
                     <div class="formGroup submit">
                         <button type="submit" class="btn btn-purchase text-white">ĐĂNG NHẬP</button>
                     </div>

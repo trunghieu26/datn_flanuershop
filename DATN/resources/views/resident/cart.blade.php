@@ -67,9 +67,64 @@
                     </h5>
                     <h5 class="colors"  style="line-height:28px; font-weight: none !important;">colors:
                     </h5>
-                    <div class="action">
-                      <button style="border: 1px solid" class="add-to-cart btn btn-default" type="submit">add to cart</button>
-                    </div>
+                    @if(Session::has('user_id'))
+                      <div class="action">
+                        <button style="border: 1px solid" class="add-to-cart btn btn-default" type="submit">add to cart</button>
+                      </div>
+                    @else
+                      <!-- Button trigger modal -->
+                      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="btnAuth">
+                                <h1 class="">LOG IN</h1>
+                              </div>
+                             <!------ Login Form -------- -->
+
+                                  <div class="formGroup form_login_modal" alt="{{csrf_token()}}">
+                                      <input type="email" class="email" placeholder="Email" name="email" >
+                                  </div>
+                                  <div class="formGroup">
+                                      <input type="password" class="password" name="password" id="password" placeholder="Password">
+                                  </div>
+                                  <div class="formGroup social-login row">
+                                      <div class="col-md-6 login_with login_with_facebook">
+                                          <a rel="noopener" href="" class="social_text">
+                                              <i class="fab fa-facebook"></i> Facebook
+                                          </a>
+                                      </div>
+                                      <div class="col-md-6 login_with login_with_gmail">
+                                          <a rel="noopener" href="" class="social_text">
+                                              <i class="fab fa-google"></i> Google
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div class="checkBox">
+                                      <input type="checkbox" name="checkbox" id="checkbox">
+                                  <span class="">Ghi nhớ tài khoản đăng nhập</span>
+                                  </div>
+                                  <div class="formGroup forgot_password">
+                                      <a href="/forgotpassword" class=" forgot_password_text">Quên mật khẩu ?</a>
+                                  </div>
+                                  <div class="formGroup forgot_password">
+                                      <span class="">Bạn chưa có tài khoản ? <a href="/register">ĐĂNG KÝ</a> tại đây</span>
+                                  </div>
+                                  <div class="formGroup submit">
+                                      <button type="submit" class="btn btn-purchase login-modal">ĐĂNG NHẬP</button>
+                                  </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button style="border: 1px solid; width: max-content;" class="add-card-login btn btn-default" data-bs-toggle="modal" href="#exampleModalToggle" role="button">ADD TO CART</button>
+                    @endif
                   </div>
                 @endforeach
               </div>
