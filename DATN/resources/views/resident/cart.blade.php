@@ -69,7 +69,7 @@
                     </h5>
                     @if(Session::has('user_id'))
                       <div class="action">
-                        <button style="border: 1px solid" class="add-to-cart btn btn-default" type="submit">add to cart</button>
+                        <button value = "{{ Session::get('user_id') }}" style="border: 1px solid" class="add-to-cart btn btn-default" type="submit">add to cart</button>
                       </div>
                     @else
                       <!-- Button trigger modal -->

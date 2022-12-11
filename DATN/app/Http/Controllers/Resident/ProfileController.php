@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Resident;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +17,15 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        return view('resident.profile');
+        $user_id =  $request->session()->get('user_id');
+        $Order = Order::with('Product')->where('user_id', $user_id)->get();
+        $quantity = 0;
+        foreach($Order as $d) {
+            $quantity += $d->quantity;
+        }
+
+        $value = User::where('id', $user_id)->get()->toArray();
+        return view('resident.profile', compact('quantity', 'value'));
     }
 
     /**

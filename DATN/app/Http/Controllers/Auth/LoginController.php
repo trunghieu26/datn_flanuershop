@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Services\Auth\LoginServices;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -24,6 +25,7 @@ class LoginController extends Controller
         }
         $request->session()->put('name', $name['name']);
         $request->session()->put('user_id', $name['id']);
+
         if(!$request->expectsJson()) {
             return redirect('/');
         }

@@ -44,7 +44,7 @@
 		text-align: unset; ;
 	}
 }
-@media only screen and  (min-width: 992px) {
+@media only screen and (min-width: 992px) {
 	.col-lg-5 {
 	    -webkit-box-flex: 0;
 	    flex: 0 0 41.66667%;
@@ -58,9 +58,6 @@
   	}
   	.nav-item-divider {
 		display: block;
-	}
-	.navbar-expand-xl .navbar-nav .dropdown-menu {
-		margin-top: 50px;
 	}
 }
 @media (min-width: 1400px) {

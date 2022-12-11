@@ -47,50 +47,26 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                               <li class="nav-item dropdown">
-                                    <a  class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                         NAM
-                                  </a>
-                                  <div class="dropdown-menu" aria-labelledby="navbarWelcome">
-                                    <a class="dropdown-item" href="index.html">
-                                          ÁO NAM
+                                    <a  class="nav-link dropdown-toggle" href="/male" id="navbarWelcome">
+                                          THỜI TRANG NAM
                                     </a>
-                                    <a class="dropdown-item " href="index-header-carousel.html">
-                                          QUẦN NAM
-                                    </a>
-                                    <a class="dropdown-item " href="index-header-parallax.html">
-                                          CÔNG SỞ
-                                    </a>
-                                </div>
                               </li>
-                              <div class="subnav">
-                                    <button class="subnavbtn"> NỮ <i class="fa fa-caret-down"></i></button>
-                                    <div class="subnav-content" >
-                                          <a href="#link1" class="dropdown-navbar">CÔNG SỞ</a>
-                                          <a href="#link1" class="dropdown-navbar">VÁY ĐẦM</a>
-                                          <a href="#link1" class="dropdown-navbar">QUẦN NỮ</a>
-                                          <a href="#link1" class="dropdown-navbar">ÁO NỮ</a>
-                                    </div>
-                              </div>
-                              <div class="subnav">
-                                    <button class="subnavbtn">PHỤ KIỆN <i class="fa fa-caret-down"></i></button>
-                                    <div class="subnav-content">
-                                          <a href="#link1" class="dropdown-navbar">PHỤ KIỆN DÀNH CHO NỮ</a>
-                                          <a href="#link1" class="dropdown-navbar">PHỤ KIỆN DÀNH CHO NAM</a>
-                                    </div>
-                              </div>
-                              <div class="subnav">
-                                    <button class="subnavbtn">NEW <i class="fa fa-caret-down"></i></button>
-                                    <div class="subnav-content">
-                                          <a href="#link1" class="dropdown-navbar">NEW PRODUCTS </a>
-                                          <a href="#link1" class="dropdown-navbar">NEW VOUCHER</a>
-                                    </div>
-                              </div>
-                              <li class="nav-item">
+                              <li class="nav-item dropdown">
+                                    <a  class="nav-link dropdown-toggle" href="/female" id="navbarWelcome" >
+                                          THỜI TRANG NỮ
+                                  </a>
+                              </li>
+                              <li class="nav-item dropdown">
+                                    <a  class="nav-link dropdown-toggle" href="#" id="navbarWelcome" >
+                                          THỜI TRANG CÔNG SỞ
+                                  </a>
+                              </li>
+                              <li class="nav-item dropdown">
                                     <a href="/contact" class="nav-link" id="navbarWelcome">
                                           LIÊN HỆ
                                     </a>
                               </li>
-                              <li class="nav-item-divider">
+                              <li class="nav-item dropdown">
                                     <span href="" class="nav-link">
                                           <span></span>
                                     </span>
@@ -99,7 +75,7 @@
                                     @if(Session::has('name'))
                                           <div class="dropdown">
                                                 <a class="dropdown-toggle " type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                      Xin chào {{ Session::get('name') }}
+                                                      Xin chào {{ Session::get('name')}}
                                                 </a>
                                                 <ul class="dropdown-menu logout">
                                                       <li><a style="color: black" href="/profile">Profile</a></li>
@@ -108,43 +84,20 @@
                                                 
                                           </div>
                                           @else
-                                          <a href="/login" class="nav-link" id="navbarWelcome">
-                                                Login
-                                          </a>
+                                          <li class="nav-item dropdown">
+                                                <a href="/login" class="nav-link" id="navbarWelcome">
+                                                      LOG IN
+                                                </a>
+                                          </li>
                                     @endif
                               </li>
-                              <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                          <div class="row total-header-section">
-                                                <div class="col-lg-6 col-sm-6 col-6">
-                                                      <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                                                </div>
-                                                @php $total = 0 @endphp
-                                                @foreach((array) session('cart') as $id => $details)
-                                                      @php $total += $details['price'] * $details['quantity'] @endphp
-                                                @endforeach
-                                                <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                                      <p>Total: <span class="text-info">$ {{ $total }}</span></p>
-                                                </div>
-                                          </div>
-                                          @if(session('cart'))
-                                                @foreach(session('cart') as $id => $details)
-                                                      <div class="row cart-detail">
-                                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                                                  <img src="{{ $details['image'] }}" />
-                                                            </div>
-                                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                                                  <p>{{ $details['name'] }}</p>
-                                                                  <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
-                                                            </div>
-                                                      </div>
-                                                @endforeach
-                                          @endif
+                              @if(Session::has('user_id'))
+                                    <div class="dropdown">
+                                          <a class="btn btn-secondary " href="/list-order" type="button">
+                                          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{$quantity}}</span>
+                                          </a>
                                     </div>
-                              </div>
+                              @endif
                         </ul>
                   </div>
             </div>

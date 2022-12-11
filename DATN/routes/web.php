@@ -16,7 +16,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resident\ProfileController;
 use App\Http\Controllers\Resident\CartProductController;
-
+use App\Http\Controllers\Resident\ProductController as ResidentProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +43,10 @@ Route::middleware(['web'])->group(function () {
     Route::get('/',[DashboardController::class,'index']);
     Route::get('/profile',[ProfileController::class,'index']);
     Route::get('/logout',[LoginController::class,'logout']);
+    Route::get('/list-order', [CartProductController::class, 'listCartOrder']);
+
+    //product resident
+    Route::get('/male', [ResidentProductController::class, 'maleProduct']);
 });
 Route::get('contact', [ContactController::class,'index'])->name('contact');
 Route::get('forgotpassword', [AuthController::class,'forgotPassword'])->name('forgotpassword');

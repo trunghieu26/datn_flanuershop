@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Address extends Model
 {
-    protected $fillable = [
-        'user_id',
-        'amount',
-        'status',
-    ];
+    protected $fillable = ['id', 'user_id','municipality','lot_number','building_name', 'building_no'];
     use HasFactory;
 }

@@ -1,5 +1,6 @@
 @include('layouts.header')
 <section class="section section-top section-full">
+    
     <div class="bg-cover bg-top" style=""></div>
     <div class="bg-overlay"></div>
     <div class="container">
@@ -26,39 +27,6 @@
 
 <section class="section" id="pages">
     <div class="container-xl">
-        <section class="section" id="pages">
-            <div class="container-xl">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6">
-                        <h2 class="text-center mb-4">
-                            SẢN PHẨM MỚI
-                        </h2>
-                        <p class="text-muted text-center mb-5">
-                                Incline comes with several professionally designed landing pages that can be easily adapted for any project.
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    @foreach ($products as $product)
-                        <div class="col-md-4" data-group="{{$product->catalog_id}}">
-                            <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
-                                    <div class="card-img-top" style="width: 350px, height :450px">
-                                        <img src="/image/{{$product->image}}" alt="App landing" style="white-space: 100%, height: 100%" class="img-fluid new-products">
-                                    </div>
-                                    <div class="card-body">
-                                    <h4 class="card-title">
-                                        {{$product->name}}
-                                    </h4>
-                                    <p class="card-text text-muted">
-                                        {{$product->content}}
-                                    </p>
-                                </div>
-                            </a> 	
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-      </section>
       <section class="section bg-light">
             <div class="line line-top"></div>
             <div class="container-xl">
@@ -95,92 +63,10 @@
         </section>
         <section class="section">
             <div class="container">
-                <div class="row justify-content-center">
-                        <div class="col-md-9">
-                        <div class="quote">
-                            <blockquote class="quote-blockquote">
-                                <p class="quote-blockquote-content" style="font-size: x-large">
-                                    In order to be irreplaceable one must always be different.
-                                </p>
-                                <footer class="quote-blockquote-footer">
-                                    <span class="text-zigzag">
-                                        - Coco Chanel
-                                    </span>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section bg-dark">
-            <div class="container">
-                <div class="row justify-content-center">
-                        <div class="col-md-8 col-lg-6">
-                        <h2 class="text-white text-center mb-4">
-                                Key theme features
-                        </h2>
-                        <p class="text-white text-muted text-center mb-5">
-                                Incline can be used to create anything from a small marketing page to a sophisticated website.
-                        </p>
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="text-center mb-5 mb-md-0">
-                            <div class="text-primary">
-                                    <a href="#">
-                                    <i class="fab fa-instagram fa-2x" ></i>
-                                </a>
-                            </div>
-                                <h4 class="text-white mb-3">
-                                Fully responsive
-                                </h4>
-                                <p class="text-white text-muted mb-0">
-                                Looks great on all major browsers, tablets and mobile devices.
-                                </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center mb-5 mb-md-0">
-                                <div class="text-primary">
-                                    <a href="#">
-                                    <i class="fab fa-twitter fa-2x" ></i>
-                                </a>
-                            </div>
-                            <h4 class="text-white mb-3">
-                                Built with SASS
-                            </h4>
-                            <p class="text-white text-muted mb-0">
-                                Easily adjustable with tons of SASS variables included.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center">
-                            <div class="text-primary">
-                                <a href="#">
-                                <i class="fab fa-github fa-2x" ></i>
-                            </a>
-                            </div>
-                                <h4 class="text-white mb-3">
-                                Free support
-                                </h4>
-                                <p class="text-white text-muted mb-0">
-                                Feel free to contact us with any feature requests or bug reports.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
                 <div class="row align-items-center">
                         <div class="col-md-6 col-lg-5 offset-lg-1 order-md-2">
                         <div class="img-effect img-effect-solid mb-5 mb-md-0">
-                                <img src="https://yevgenysim-turkey.github.io/incline/assets/img/47.jpg" class="img-fluid" alt="...">
+                                <img src="https://hidanz.com/wp-content/uploads/2020/10/phong-cach-thoi-trang-nam-duong-pho.jpg" class="img-fluid" alt="...">
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 offset-lg-1 order-md-1" style="text-align: center;">
@@ -199,78 +85,41 @@
                                 </li>
                         </ul>
                         <a href="documentation.html" class="btn btn-outline-primary">
-                            Documentation
+                            ORDER
                         </a>
                     </div>
                 </div>
             </div>
         </section>
       <section class="section bg-light">
-            <div class="container">
-                <div class="row justify-content-center">
+        <div class="container-xl">
+            <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6">
-                        <h2 class="text-center mb-4">
-                                Ultimate solution
-                        </h2>
-                        <p class="text-muted text-center mb-5">
-                                Easily create a website of any complexity with dozens of pages and independent components for any purpose.
-                        </p>
-                    </div>
-                </div>
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-4 col-ulti">
-                        <div class="card card-tall card-stretch border-0 mb-3 md-md-0">
-                                <div class="bg-cover" style="background-image: url(https://yevgenysim-turkey.github.io/incline/assets/img/24.jpg)"></div>
-                                <div class="bg-overlay"></div>
-                            <div class="card-body card-bottom">
-                                <div class="card-icon text-primary">
-                                        <span class="icon icon-tick"></span>
-                                </div>
-                                <h4 class="card-title text-white">
-                                        Landing pages
-                                </h4>
-                                <p class="card-text text-white text-muted mb-0">
-                                        Beautiful marketing pages to help you promote your product or a service.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-ulti">
-                        <div class="card card-tall card-stretch card-standout shadow border-0 mb-3 md-md-0">
-                                <div class="bg-cover" style="background-image: url(https://yevgenysim-turkey.github.io/incline/assets/img/22.jpg)"></div>
-                                <div class="bg-overlay"></div>
-                                <div class="card-body card-bottom">
-                                <div class="card-icon text-primary">
-                                        <span class="icon icon-tick"></span>
-                                </div>
-                                <h4 class="card-title text-white">
-                                        Landing pages
-                                </h4>
-                                <p class="card-text text-white text-muted mb-0">
-                                        Beautiful marketing pages to help you promote your product or a service.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="col-md-4 col-ulti">
-                        <div class="card card-tall card-stretch card-standout shadow border-0 mb-3 md-md-0">
-                                <div class="bg-cover" style="background-image: url(https://yevgenysim-turkey.github.io/incline/assets/img/15.jpg)"></div>
-                                <div class="bg-overlay"></div>
-                                <div class="card-body card-bottom">
-                                <div class="card-icon text-primary">
-                                        <span class="icon icon-tick"></span>
-                                </div>
-                                <h4 class="card-title text-white">
-                                        Landing pages
-                                </h4>
-                                <p class="card-text text-white text-muted mb-0">
-                                        Beautiful marketing pages to help you promote your product or a service.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="text-center mb-4">
+                        ÁO NAM
+                    </h2>
                 </div>
             </div>
+            <div class="row">
+                @foreach ($male_shirt as $male_shirts)
+                <div class="col-md-4">
+                        <a href="/add-to-cart/{{$male_shirts->id}}" class="card border-0 mb-3 mb-md-0">
+                                <div class="card-img-top">
+                                <img src="/image/{{$male_shirts->image}}" alt="Carousel header" class="img-fluid">
+                                </div>
+                            <div class="card-body card-mid">
+                                <h4 class="card-title">
+                                    {{$male_shirts->name}}
+                                </h4>
+                                <p class="card-text text-muted">
+                                    {{$male_shirts->content}}
+                                </p>
+                            </div>
+                        </a> 
+                    </div>
+                @endforeach
+            </div> 
+        </div>
       </section>
       <section class="section">
           <div class="container">
