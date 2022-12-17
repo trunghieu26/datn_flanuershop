@@ -9,4 +9,8 @@ class User extends Model
 {
     protected $fillable = ['id','name', 'email', 'phone', 'address','password','role'];
     use HasFactory;
+
+    public function Comment(){
+        return $this->hasMany(Comment::class);
+    }
 }

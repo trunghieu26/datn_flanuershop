@@ -47,18 +47,23 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                               <li class="nav-item dropdown">
-                                    <a  class="nav-link dropdown-toggle" href="/male" id="navbarWelcome">
-                                          THỜI TRANG NAM
+                                    <a  class="nav-link" href="/male" id="navbarWelcome">
+                                         NAM
                                     </a>
                               </li>
                               <li class="nav-item dropdown">
-                                    <a  class="nav-link dropdown-toggle" href="/female" id="navbarWelcome" >
-                                          THỜI TRANG NỮ
+                                    <a  class="nav-link" href="/female" id="navbarWelcome" >
+                                         NỮ
                                   </a>
                               </li>
                               <li class="nav-item dropdown">
-                                    <a  class="nav-link dropdown-toggle" href="#" id="navbarWelcome" >
-                                          THỜI TRANG CÔNG SỞ
+                                    <a  class="nav-link " href="#" id="navbarWelcome" >
+                                          CÔNG SỞ
+                                  </a>
+                              </li>
+                              <li class="nav-item dropdown">
+                                    <a  class="nav-link" href="#" id="navbarWelcome" >
+                                          SALE OFF %
                                   </a>
                               </li>
                               <li class="nav-item dropdown">
@@ -72,17 +77,7 @@
                                     </span>
                               </li>
                               <li class="nav-item">
-                                    @if(Session::has('name'))
-                                          <div class="dropdown">
-                                                <a class="dropdown-toggle " type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                      Xin chào {{ Session::get('name')}}
-                                                </a>
-                                                <ul class="dropdown-menu logout">
-                                                      <li><a style="color: black" href="/profile">Profile</a></li>
-                                                      <li><a style="color: black" href="/logout">Đăng xuất</a></li>
-                                                </ul>
-                                                
-                                          </div>
+                                    @if(Session::has('user_id'))
                                           @else
                                           <li class="nav-item dropdown">
                                                 <a href="/login" class="nav-link" id="navbarWelcome">
@@ -92,9 +87,19 @@
                                     @endif
                               </li>
                               @if(Session::has('user_id'))
+                                    <div class="nav-item dropdown">
+                                          <a class="nav-link" class="dropdown-toggle " type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Xin chào {{ Session::get('name')}}
+                                          </a>
+                                          <ul class="dropdown-menu logout">
+                                                <li><a style="color: black" href="/profile">Profile</a></li>
+                                                <li><a style="color: black" href="/logout">Đăng xuất</a></li>
+                                          </ul>
+                                          
+                                    </div>
                                     <div class="dropdown">
                                           <a class="btn btn-secondary " href="/list-order" type="button">
-                                          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{$quantity}}</span>
+                                          <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge badge-pill badge-danger">{{$quantity}}</span>
                                           </a>
                                     </div>
                               @endif

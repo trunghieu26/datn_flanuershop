@@ -3,22 +3,27 @@
 namespace App\Http\Controllers\Resident;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartProductController extends Controller
 {
-    public function index($id, Request $request) {
+    public function index($id, Request $request, Product $products) {
         $user_id =  $request->session()->get('user_id');
-        
+        $comment = Comment::all()->where('product_id', $id);
         $Order = Order::with('Product')->where('user_id', $user_id)->get();
         $quantity = 0;
         foreach($Order as $d) {
             $quantity += $d->quantity;
         }
-        $products = Product::where('id', $id)->get();
-        return view('resident.cart', compact('products', 'quantity'));
+        $products = Product::where('id', $id)->with('Comment')->get();
+        $users = User::where('id', $user_id )->first();
+        $like_comment = Like::where('user_id', $user_id)->where('object_type','comment')->get();
+        return view('resident.cart', compact('products', 'quantity', 'users', 'comment'));
     }
     public function addToCart($id, Request $request) {
         $products = Product::findOrFail($id);
@@ -69,6 +74,30 @@ class CartProductController extends Controller
             $quantity += $d->quantity;
         }
         return view('resident.order_list', compact('quantity', 'Order'));
+    }
+
+    public function comment(Request $request ){
+        $data = new Comment();
+        $data->product_id=$request->product_id;
+        $data->parent_id =$request->get('parent_id');
+        $data->comment=$request->comment;
+        $data->user_id =$request->session()->get('user_id');
+        $data->save();
+        return response()->json([
+            'bool'=>true,
+            'parent_id' => $data->parent_id
+        ]);
+    }
+
+    public function Like(Request $request) {
+        $like = new Like();
+        $like->product_id = $request->product_id;
+        $like->object_type = $request->object_type;
+        $like->object_id = $request->object_id;
+        $user_id =  $request->session()->get('user_id');
+        $like->user_id = $user_id;
+        $result = $like->Like($like);
+        echo json_encode($result);
     }
 
 }

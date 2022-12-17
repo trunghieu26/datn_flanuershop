@@ -14,4 +14,8 @@ class Product extends Model
     public function Order () {
         return $this->hasMany(Order::class);
     }
+
+    public function Comment(){
+        return $this->hasMany(Comment::class)->orderBy('id','desc')->whereNull('parent_id');
+    }
 }

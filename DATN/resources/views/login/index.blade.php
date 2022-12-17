@@ -11,6 +11,11 @@
                  <!------ Login Form -------- -->
                 <form class="login" action="" method="post">
                     {{ csrf_field() }}
+                    @if(Session::has('success'))
+                        <div class="alert alert-danger">
+                            {{Session::get('success')}}
+                        </div>
+                    @endif
                     <div class="formGroup">
                         <input type="email" placeholder="Email" name="email" >
                     </div>
@@ -34,7 +39,7 @@
                     <span class="text">Ghi nhớ tài khoản đăng nhập</span>
                     </div>
                     <div class="formGroup forgot_password">
-                        <a href="/forgotpassword" class="text forgot_password_text">Quên mật khẩu ?</a>
+                        <a href="/password/forgot" class="text forgot_password_text">Quên mật khẩu ?</a>
                     </div>
                     <div class="formGroup forgot_password">
                         <span class="text">Bạn chưa có tài khoản ? <a href="/register">ĐĂNG KÝ</a> tại đây</span>

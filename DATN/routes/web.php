@@ -34,7 +34,7 @@ use App\Http\Controllers\Resident\ProductController as ResidentProductController
 Route::middleware(['web'])->group(function () {
     Route::get('register',[RegisterController::class,'index']);
     Route::post('register',[RegisterController::class,'store']);
-    Route::get('login',[LoginController::class,'index']);
+    Route::get('login',[LoginController::class,'index'])->name('login.user');
     Route::post('login',[LoginController::class,'login']);
     Route::get('/add-to-cart/{id}', [CartProductController::class, 'index']);
     Route::post('/add-to-cart/{id}',[CartProductController::class, 'addToCart']);
@@ -47,9 +47,16 @@ Route::middleware(['web'])->group(function () {
 
     //product resident
     Route::get('/male', [ResidentProductController::class, 'maleProduct']);
+
+    //Comment
+    Route::post('comment', [CartProductController::class, 'comment']);
+    Route::post('like', [CartProductController::class, 'Like']);
 });
 Route::get('contact', [ContactController::class,'index'])->name('contact');
-Route::get('forgotpassword', [AuthController::class,'forgotPassword'])->name('forgotpassword');
+Route::get('password/forgot', [AuthController::class,'forgotPassword'])->name('forgot.password.from');
+Route::post('password/forgot', [AuthController::class,'sendMail'])->name('forgot.password.link');
+Route::get('password/reset/{token}', [AuthController::class,'showResetLink'])->name('forgot.password.from');
+Route::post('/password/reset',[AuthController::class, 'resetPassword'])->name('reset.password');
 
 //Admin route
 Route::group(['prefix' => 'admin'], function() {   
