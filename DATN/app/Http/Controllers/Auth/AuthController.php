@@ -28,7 +28,7 @@ class AuthController extends Controller
             'created_at'=>Carbon::now()
         ]);
 
-        $action_link = route('forgot.password.from',['token'=>$token, 'email'=>$request->email]);
+        $action_link = route('forgot.password.form',['token'=>$token, 'email'=>$request->email]);
         $body = "Chúng tôi đã gửi một link resert password đến ".$request->email."bạn có thể thay đổi  mật hkaaur bằng cách click vào đây";
         \Mail::send('emailforgot',['action_link'=>$action_link, 'body'=>$body], function($message) use($request){
             $message->from('tthieu.18it2@vku.udn.vn');
@@ -36,7 +36,7 @@ class AuthController extends Controller
                     ->subject('Reset password');
         });
 
-        return back()()->withInput()->with('done', 'Link reset password đã được gửi thành công đến gmail của bạn');
+        return back()->withInput()->with('done', 'Link reset password đã được gửi thành công đến gmail của bạn');
     }
 
     public function showResetLink(Request $request, $token = null)

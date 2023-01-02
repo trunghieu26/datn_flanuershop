@@ -4,18 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Order extends Migration
+class UpdateFieldComment extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+     /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::rename('rders', 'orders');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->integer('count_like')->default(0);
+        });
     }
-   
+
     /**
      * Reverse the migrations.
      *
@@ -23,6 +30,8 @@ class Order extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('comments', function($table) {
+            $table->dropColumn('count_like');
+        });
     }
 }

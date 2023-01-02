@@ -66,9 +66,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -80,7 +80,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $request->all();
+        Product::where('id', $id)->update($update);
+        return view('/admin/products')->with('success','Post updated successfully!');
     }
 
     /**

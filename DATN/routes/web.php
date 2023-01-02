@@ -17,6 +17,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resident\ProfileController;
 use App\Http\Controllers\Resident\CartProductController;
 use App\Http\Controllers\Resident\ProductController as ResidentProductController;
+use App\Events\Message;
+use App\Http\Controllers\Chat\ChatController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,14 +58,18 @@ Route::middleware(['web'])->group(function () {
 Route::get('contact', [ContactController::class,'index'])->name('contact');
 Route::get('password/forgot', [AuthController::class,'forgotPassword'])->name('forgot.password.from');
 Route::post('password/forgot', [AuthController::class,'sendMail'])->name('forgot.password.link');
-Route::get('password/reset/{token}', [AuthController::class,'showResetLink'])->name('forgot.password.from');
+Route::get('password/reset/{token}', [AuthController::class,'showResetLink'])->name('forgot.password.form');
 Route::post('/password/reset',[AuthController::class, 'resetPassword'])->name('reset.password');
+
+//Chat-app
+Route::get('/send-message-form', [ChatController::class, 'view']);
+Route::post('/send-message',  [ChatController::class, 'sendMessage']);
 
 //Admin route
 Route::group(['prefix' => 'admin'], function() {   
     // Dash
     Route::get('/logout',[LoginController::class,'logout']);
-    Route::get('/login', [HomeController::class,'index'])->name('admin.index');
+    Route::get('/login', [HomeController::class,'index']);
     Route::get('/', [HomeController::class,'index'])->name('admin.index');
     Route::resource('products',ProductController::class);
     Route::resource('categories',CategoriesController::class);
@@ -72,13 +79,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/ourstaff',[OurstaffController::class,'index']);
     Route::get('/setting',[SettingController::class,'index']);
 });
-
-// Route::get('set-session', function () {
-//     session()->put('name', 'trantrungih');
-// });
-// Route::get('get-session', function() {
-//     echo session('name');
-// });
 Route::get('del-session', function() {
     session()->flush();
 });

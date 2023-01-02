@@ -361,5 +361,10 @@
       </section>
     </div>
 </section>
-
+<div class="container">
+    <div class="component">
+      <!-- Start Nav Structure -->
+      <button class="cn-button" id="cn-button">+</button>
+    </div>
+</div>
 @include('layouts.footer')

@@ -95,11 +95,15 @@
                                                 <li><a style="color: black" href="/profile">Profile</a></li>
                                                 <li><a style="color: black" href="/logout">Đăng xuất</a></li>
                                           </ul>
-                                          
                                     </div>
                                     <div class="dropdown">
                                           <a class="btn btn-secondary " href="/list-order" type="button">
                                           <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge badge-pill badge-danger">{{$quantity}}</span>
+                                          </a>
+                                    </div>
+                                    <div class="dropdown chat-header" style="margin-left: 20px">
+                                          <a class="btn btn-secondary " href="/send-message-form" type="button">
+                                                <i class="fas fa-sms" aria-hidden="true"></i><span class="badge badge-pill badge-danger">{{$quantity}}</span>
                                           </a>
                                     </div>
                               @endif

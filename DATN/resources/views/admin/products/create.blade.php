@@ -35,7 +35,7 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Discount</label>
                             <select name="discount" class="form-select select-products" aria-label="Default select example">
-                                <option >0</option>
+                                <option selected>0</option>
                                 <option value="0">5</option>
                                 <option value="1">10</option>
                                 <option value="2">20</option>

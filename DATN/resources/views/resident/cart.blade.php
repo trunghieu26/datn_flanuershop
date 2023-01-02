@@ -139,7 +139,6 @@
           <div class="card mt-4">
             <h5 class="card-header">ĐÁNH GIÁ SẢN PHẨM <span  class="comment-count float-right badge badge-info"></span></h5> 
             @foreach ($products as $product)
-            
               <div class="card-body">
                   @csrf
                   <div class="add-comment mb-3 " >

@@ -5,6 +5,18 @@ body{
 	background-color:#abd9e9 !important;
 	font-family:Arial;
 }
+.component * {
+	-moz-box-sizing: border-box;  
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	  position: relative;
+}
+.chat-header {
+	margin-left: 10px;
+}
+  
 #container{
 	width:750px;
 	height:800px;
@@ -46,6 +58,9 @@ aside input{
 	background-repeat:no-repeat;
 	background-position:170px;
 	background-size:40px;
+}
+aside input::-moz-placeholder{
+	color:#fff;
 }
 aside input::placeholder{
 	color:#fff;
@@ -206,6 +221,9 @@ main footer textarea{
 	padding:20px;
 	font-size:13px;
 	margin-bottom:13px;
+}
+main footer textarea::-moz-placeholder{
+	color:#ddd;
 }
 main footer textarea::placeholder{
 	color:#ddd;
