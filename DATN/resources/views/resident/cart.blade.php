@@ -25,7 +25,7 @@
                       <span class="review-no">41 reviews</span>
                     </div>
                     <p class="product-description" value ="{{$product->price}}">{{$product->content}}.</p>
-                    <h4 class="price" >current price: <span>${{$product->price}}</span></h4>
+                    <h4 class="price" >current price: <span>{{$product->price}} đ</span></h4>
                     <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                     <h5 class="sizes" style="line-height:28px">sizes:
                       <div class="form-check form-check-inline">
@@ -129,7 +129,7 @@
                 @endforeach
               </div>
             </div>
-          </section> 
+      </section> 
     </div>
 </section>
 <section class="section">
@@ -145,20 +145,21 @@
                       <textarea id="comment_content" type="text" class="form-control comment" name="comment" placeholder="Enter Comment"></textarea>
                       @if(Session::has('user_id'))
                       <div class="action">
-                        <button alt="{{ $product->id }}" value="{{csrf_token()}}" class="btn btn-dark btn-sm mt-2 save_comment">Submit</button>
+                        <button alt="{{ $product->id }}" value="{{csrf_token()}}" data-name = {{$users->name}} class="btn btn-dark btn-sm mt-2 save_comment">Submit</button>
                       </div>
                     @else
                     <!-- Button trigger modal -->
                     <div class="alert alert-warning alert-dismissible fade show">
                   <!-- Large modal -->
-                    <button alt="{{ $product->id }}" value="{{csrf_token()}}" class="btn btn-dark btn-sm mt-2">Submit</button>
+                    <button alt="{{ $product->id }}" value="{{csrf_token()}}" class="btn btn-dark btn-sm mt-2"  class="add-card-login btn btn-default" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Submit</button>
                   @endif
                       
                   </div>
                   <div class="comments"> 
                     @if(count($product->Comment)>=0)
                         @foreach($product->Comment as $comment)
-                            <blockquote class="blockquote">
+                          <div class="parent-all">
+                            <blockquote class="blockquote {{$comment->id}}">
                                 <div class="comment-parent"><img  class="avatar" src="http://placeimg.com/40/40/animals">
                                     <div class="comment-group" data-comment="{{$comment->id}}" >
                                         <p class="name-comment" >{{ $comment->user->name}}</p>
@@ -172,12 +173,18 @@
                                 <small class="mb-0"></small>
                             </blockquote>
                             <div class="button-post">
-                                <a id="reply" data-id="{{$comment->id}}"  class="">
+                                <a id="reply" data-id="{{$comment->id}}"  class="btn btn-sm btn-default btn-outline-danger">
                                   Reply
                                 </a>
-                                <a id="saveLike" data-comment = "{{$comment->id}}" class="" data-type="comment" alt="{{ $product->id}}">
-                                  Like
-                                </a>
+                                @if (in_array($comment->id, $key_list))
+                                  <a id="saveLike" data-comment = "{{$comment->id}}" class="btn btn-sm btn-default btn-outline-success active" data-type="comment" alt="{{ $product->id}}">
+                                    Like
+                                  </a>
+                                @else
+                                  <a id="saveLike" data-comment = "{{$comment->id}}" class="btn btn-sm btn-default btn-outline-success" data-type="comment" alt="{{ $product->id}}">
+                                    Like
+                                  </a>
+                                @endif
                                 <div class="reply_system-{{$comment->id}}" id="reply-system" data-id="{{$comment->id}}" >
                                     @if ( $comment->replies )
                                         @foreach($comment->replies as $rep1)
@@ -188,13 +195,31 @@
                                                   <p class="name-comment" >{{ $comment->user->name}}</p>
                                                   <p class="date-comment">{{ $rep1->created_at }}</p>
                                                   <p class="comment-content">{{ $rep1->comment }}</p>
+                                                  @if($rep1->count_like > 0)
+                                                    <span class="badge like {{$rep1->id}}" id="badge-like" data-value="{{$rep1->id}}"  style="position: absolute;/* float: right; */margin-left: 500px;margin-top: -15px;">{{$rep1->count_like}}</span>
+                                                  @endif 
                                                 </div>
                                             </div>
                                         </div >
+                                        <div class="button-like" style="margin-left: 50px">
+                                          <a id="reply" data-id="{{$rep1->id}}"  class="btn btn-sm btn-default btn-outline-danger">
+                                            Reply
+                                          </a>
+                                          @if (in_array($rep1->id, $key_list))
+                                            <a id="saveLike" data-comment = "{{$rep1->id}}" class="btn btn-sm btn-default btn-outline-success active" data-type="comment" alt="{{ $product->id}}">
+                                              Like
+                                            </a>
+                                          @else
+                                            <a id="saveLike" data-comment = "{{$rep1->id}}" class="btn btn-sm btn-default btn-outline-success" data-type="comment" alt="{{ $product->id}}">
+                                              Like
+                                            </a>
+                                          @endif
+                                        </div>
                                         @endforeach
                                     @endif
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     @else
                     <p class="no-comments">No Comments Yet</p>

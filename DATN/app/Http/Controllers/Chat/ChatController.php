@@ -24,7 +24,7 @@ class ChatController extends Controller
             )
         );
         Chat::create([
-            'user_id' => $user_id,
+            'user_name' => $request->username,
             'message' => $request->message
         ]);
         

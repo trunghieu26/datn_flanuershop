@@ -41,8 +41,9 @@ message_form.addEventListener('submit', function(e) {
 
 window.Echo.channel('chat')
             .listen('.message', (e) => {
-                console.log(e.username);
-                messages_el.innerHTML +=  `<li class = "me">
+                console.log(document.getElementById("username").value);
+                if(e.username == document.getElementById("username").value) {
+                    messages_el.innerHTML +=  `<li class = "me">
                     <div class="entete">
                         <span class="status green"></span>
                         <h2  name = "`+e.username+`" class = "name" value = "`+e.username+`">`+e.username+`</h2>
@@ -53,9 +54,19 @@ window.Echo.channel('chat')
                         +e.message+
                     `</div>
                 </li>`
-               
-                if(document.getElementById(e.message).value == username_input) {
-                    console.log(document.getElementById(e.message).parents('li'));
+                } else {
+                    messages_el.innerHTML +=  `<li class = "you">
+                    <div class="entete">
+                        <span class="status green"></span>
+                        <h2  name = "`+e.username+`" class = "name" value = "`+e.username+`">`+e.username+`</h2>
+                        <h3>10:12AM, Today</h3>
+                    </div>
+                    <div class="triangle"></div>
+                    <div id = "`+e.message+`" class="message">`
+                        +e.message+
+                    `</div>
+                </li>`
                 }
+                
+               
             });
-            console.log(document.getElementById(e.message).value);

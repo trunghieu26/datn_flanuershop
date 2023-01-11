@@ -2092,13 +2092,13 @@ message_form.addEventListener('submit', function (e) {
   axios(options);
 });
 window.Echo.channel('chat').listen('.message', function (e) {
-  console.log(e.username);
-  messages_el.innerHTML += "<li class = \"me\">\n                    <div class=\"entete\">\n                        <span class=\"status green\"></span>\n                        <h2  name = \"" + e.username + "\" class = \"name\" value = \"" + e.username + "\">" + e.username + "</h2>\n                        <h3>10:12AM, Today</h3>\n                    </div>\n                    <div class=\"triangle\"></div>\n                    <div id = \"" + e.message + "\" class=\"message\">" + e.message + "</div>\n                </li>";
-  if (document.getElementById(e.message).value == username_input) {
-    console.log(document.getElementById(e.message).parents('li'));
+  console.log(document.getElementById("username").value);
+  if (e.username == document.getElementById("username").value) {
+    messages_el.innerHTML += "<li class = \"me\">\n                    <div class=\"entete\">\n                        <span class=\"status green\"></span>\n                        <h2  name = \"" + e.username + "\" class = \"name\" value = \"" + e.username + "\">" + e.username + "</h2>\n                        <h3>10:12AM, Today</h3>\n                    </div>\n                    <div class=\"triangle\"></div>\n                    <div id = \"" + e.message + "\" class=\"message\">" + e.message + "</div>\n                </li>";
+  } else {
+    messages_el.innerHTML += "<li class = \"you\">\n                    <div class=\"entete\">\n                        <span class=\"status green\"></span>\n                        <h2  name = \"" + e.username + "\" class = \"name\" value = \"" + e.username + "\">" + e.username + "</h2>\n                        <h3>10:12AM, Today</h3>\n                    </div>\n                    <div class=\"triangle\"></div>\n                    <div id = \"" + e.message + "\" class=\"message\">" + e.message + "</div>\n                </li>";
   }
 });
-console.log(document.getElementById(e.message).value);
 
 /***/ }),
 

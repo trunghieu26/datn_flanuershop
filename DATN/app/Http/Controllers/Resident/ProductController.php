@@ -20,4 +20,21 @@ class ProductController extends Controller
         }
         return view('products.male', compact('products', 'quantity','male_shirt'));
     }
+
+    public function femaleProduct (Request $request)
+    {
+        $products = Product::where('name', 'LIKE', '%nữ%')->get();
+        $user_id =  $request->session()->get('user_id');
+        $Order = Order::with('Product')->where('user_id', $user_id)->get();
+        $quantity = 0;
+        foreach($Order as $d) {
+            $quantity += $d->quantity;
+        }
+        return view('products.female', compact('products','quantity'));
+    }
+
+    public function saleProduct (Request $request)
+    {
+        return view('products.coupon');
+    }
 }

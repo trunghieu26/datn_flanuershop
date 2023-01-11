@@ -23,7 +23,11 @@ class CartProductController extends Controller
         $products = Product::where('id', $id)->with('Comment')->get();
         $users = User::where('id', $user_id )->first();
         $like_comment = Like::where('user_id', $user_id)->where('object_type','comment')->get();
-        return view('resident.cart', compact('products', 'quantity', 'users', 'comment'));
+        $key_list = [];
+        foreach($like_comment as $keyed) {
+            $key_list[] = $keyed->object_id;
+        }
+        return view('resident.cart', compact('products', 'quantity', 'users', 'comment', 'key_list'));
     }
     public function addToCart($id, Request $request) {
         $products = Product::findOrFail($id);

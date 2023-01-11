@@ -6,34 +6,45 @@
         @foreach($Order as $orders)
             <article class="card">
                 <header class="card-header"> My Orders / Tracking </header>
-                <div class="card-body">
+                <div class="card-body"  value="{{$orders->id}}">
                     <h6>Order ID: {{$orders->id}}</h6>
                     <ul class="row">
                         <li class="col-md-4">
                             <figure class="itemside mb-3">
                                 <div class="aside"><img src="/image/{{$orders->product->image}}" class="img-sm border"></div>
                                 <figcaption class="info align-self-center">
-                                    <p class="title">{{$orders->product->name}}<br> </p> <span class="text-muted">${{$orders->product->price}} </span>
+                                    <p class="title">{{$orders->product->name}}<br> </p> <span class="text-muted">{{$orders->product->price}} đ</span>
                                 </figcaption>
                             </figure>
                         </li>
                     </ul>
                     <article class="card">
-                        <div class="card-body row">
+                        <div class="card-body row " id = "Hieu" value = "{{$orders->amount}}">
                             <div class="col"> <strong>Estimated Delivery time:</strong> <br>{{$orders->created_at->addDays(7)->format('D-m-y')}}</div>
-                            <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
-                            <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
-                            <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                            <div class="col"> <strong>Đơn giá:</strong> <br> {{$orders->product->price}} đ</div>
+                            <div class="col" id = "append"> <strong>Số lượng:</strong>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <button id="stepDown" class="btn btn-link px-2"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                      <i class="fas fa-minus"></i>
+                                    </button>
+            
+                                    <input style="width: -webkit-fill-available;" id="form1" min="0" name="quantity" value="1" type="number"
+                                      class="form-control form-control-sm" />
+            
+                                    <button  id="stepUp" class="btn btn-link px-2"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                      <i class="fas fa-plus"></i>
+                                    </button>
+                                  </div>
+                            </div>
+                            <div class="col " value = "{{$orders->amount}}" id ="total-amount"> <strong>Số tiền:</strong> <br> {{$orders->amount}} đ</div>
                         </div>
+                        
                     </article>
-                    <div class="track">
-                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
-                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
-                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
-                    </div>
+                    <button  href="/list-transaction" style="width: 150px; margin-left:80%;" value="{{$orders->id}}" data-abc="{{csrf_token()}}" id="btn_success" class="btn btn-primary btn_success">Thanh toán</button>
                     <hr>
-                    <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+                    <a href="/add-to-cart/{{$orders->product_id}}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Quay trở về</a>
                 </div>
             </article>
         @endforeach

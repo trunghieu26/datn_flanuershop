@@ -19,7 +19,7 @@
                     <header>
                         <input type="text" placeholder="search">
                     </header>
-                    <ul>
+                    {{-- <ul>
                         <li>
                             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
                             <div>
@@ -120,7 +120,7 @@
                                 </h3>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </aside>
                 <main>
                     <form id="message_form">
@@ -131,6 +131,45 @@
                             </div>
                         </header>
                         <ul id="messages">
+                            @foreach ($chats as $chat)
+                                @if($chat->user_name == 'hieu')
+                                    <li class = "me">
+                                        <div class="entete">
+                                            <span class="status green"></span>
+                                            <h2  name = "" class = "name" value = "`"></h2>
+                                            <h3>10:12AM, Today</h3>
+                                        </div>
+                                        <div class="triangle"></div>
+                                        <div id = "" class="message">
+                                            {{$chat->message}}
+                                        </div>
+                                    </li>
+                                @elseif($chat->user_id == 0)
+                                    <li class = "you">
+                                        <div class="entete">
+                                            <span class="status green"></span>
+                                            <h2  name = "" class = "name" value = "">Admin</h2>
+                                            <h3>10:12AM, Today</h3>
+                                        </div>
+                                        <div class="triangle"></div>
+                                        <div id = "" class="message">
+                                            {{$chat->message}}
+                                        </div>
+                                    </li>
+                                @else
+                                    <li class = "you">
+                                        <div class="entete">
+                                            <span class="status green"></span>
+                                            <h2  name = "" class = "name" value = "">Admin</h2>
+                                            <h3>10:12AM, Today</h3>
+                                        </div>
+                                        <div class="triangle"></div>
+                                        <div id = "" class="message">
+                                            {{$chat->message}}
+                                        </div>
+                                    </li>
+                                @endif
+                            @endforeach
                         </ul>
                         <footer>
                             <textarea type="text" name="message" id="message_input" placeholder="Vui lòng nhập tin nhắn mà bạn muốn gửi"></textarea>

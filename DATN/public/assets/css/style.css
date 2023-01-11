@@ -115,7 +115,7 @@ body {
   	background-size: cover;
 }
 .bg-top {
-	background-image: url(https://yevgenysim-turkey.github.io/incline/assets/img/42.jpg);
+	background-image: url(https://routine.vn/media/banner/tmp/images/SLIDER_-_TH_I_TRANG_N__1.png);
 }
 .bg-overlay::before {
   	content: '';
@@ -578,8 +578,7 @@ a {
 	margin-bottom: 20px;
 	font-size: 14px;
 	font-weight: bold;
-	background-color: transparent;
-	color: white;
+	background-color: transparent;;
 }
 input:focus {
 	outline: none !important;
@@ -852,10 +851,10 @@ input:focus {
 				animation-duration: .3s; }
 	
 	.card {
-		margin-top: 50px;
 		background: #eee;
 		padding: 3em;
-		line-height: 1.5em; }
+		line-height: 1.5em;
+	}
 	
 	@media screen and (min-width: 997px) {
 		.wrapper {
@@ -1259,4 +1258,36 @@ left: 0px;
 }
 #saveLike:active {
 	color: #0076ad;
+}
+.home-banner .home-banner-item img {
+    display: block;
+    width: 100%;
+	max-width: 100%;
+    height: auto;
+    border: 0;
+}
+.home-banner .home-banner-item .btn {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border: 1.5px solid #fff;
+    padding: 7px;
+	position: absolute;
+	z-index: 2;
+    min-width: 140px;
+    max-width: 100%;
+    bottom: 40px;
+    -webkit-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(200%,0);
+    white-space: nowrap;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    text-decoration: none;
 }

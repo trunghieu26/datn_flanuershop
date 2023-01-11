@@ -62,8 +62,8 @@
                                   </a>
                               </li>
                               <li class="nav-item dropdown">
-                                    <a  class="nav-link" href="#" id="navbarWelcome" >
-                                          SALE OFF %
+                                    <a  class="nav-link" href="sale-off" id="navbarWelcome" >
+                                          KHUYẾN MÃI
                                   </a>
                               </li>
                               <li class="nav-item dropdown">
@@ -81,7 +81,7 @@
                                           @else
                                           <li class="nav-item dropdown">
                                                 <a href="/login" class="nav-link" id="navbarWelcome">
-                                                      LOG IN
+                                                      ĐĂNG NHẬP
                                                 </a>
                                           </li>
                                     @endif
@@ -92,7 +92,7 @@
                                                 Xin chào {{ Session::get('name')}}
                                           </a>
                                           <ul class="dropdown-menu logout">
-                                                <li><a style="color: black" href="/profile">Profile</a></li>
+                                                <li><a style="color: black" href="/profile">Hồ sơ</a></li>
                                                 <li><a style="color: black" href="/logout">Đăng xuất</a></li>
                                           </ul>
                                     </div>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="dropdown chat-header" style="margin-left: 20px">
                                           <a class="btn btn-secondary " href="/send-message-form" type="button">
-                                                <i class="fas fa-sms" aria-hidden="true"></i><span class="badge badge-pill badge-danger">{{$quantity}}</span>
+                                                <i class="fas fa-sms" aria-hidden="true"></i><span class="badge badge-pill badge-danger"></span>
                                           </a>
                                     </div>
                               @endif

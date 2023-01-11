@@ -19,6 +19,7 @@ use App\Http\Controllers\Resident\CartProductController;
 use App\Http\Controllers\Resident\ProductController as ResidentProductController;
 use App\Events\Message;
 use App\Http\Controllers\Chat\ChatController;
+use App\Http\Controllers\Resident\TransactionController;
 use Illuminate\Http\Request;
 
 /*
@@ -50,10 +51,19 @@ Route::middleware(['web'])->group(function () {
 
     //product resident
     Route::get('/male', [ResidentProductController::class, 'maleProduct']);
+    Route::get('/sale-off',[ResidentProductController:: class, 'saleProduct']);
+    Route::get('/female',[ResidentProductController:: class, 'femaleProduct']);
 
     //Comment
     Route::post('comment', [CartProductController::class, 'comment']);
     Route::post('like', [CartProductController::class, 'Like']);
+
+    //Counpon
+
+    //Transaction
+    Route::post('transaction',[TransactionController::class, 'index']);
+    Route::get('list-transaction',[TransactionController::class, 'listTransaction']);
+   
 });
 Route::get('contact', [ContactController::class,'index'])->name('contact');
 Route::get('password/forgot', [AuthController::class,'forgotPassword'])->name('forgot.password.from');

@@ -6,10 +6,10 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-8 col-lg-7">
                 <h3 class="text-white text-center mb-4 animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
-                        WELLCOME
+                    CHÀO MỪNG 
                 </h3>
                 <h1 class="text-white text-center mb-4 animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
-                    Flâneur Clothes Shop
+                    BẠN ĐẾ VỚI CỬA HÀNG ÁO QUẦN Flâneur
                 </h1>
                 <p class="lead text-white text-muted text-center mb-5 animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
                         Cảm ơn bạn đã ghé thăm !
@@ -24,44 +24,58 @@
     </div>
 </section>
 
-<section class="section" id="pages">
-    <div class="container-xl">
-        <section class="section" id="pages">
-            <div class="container-xl">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6">
-                        <h2 class="text-center mb-4">
-                            SẢN PHẨM MỚI
-                        </h2>
-                        <p class="text-muted text-center mb-5">
-                                Incline comes with several professionally designed landing pages that can be easily adapted for any project.
+<div class="widget block block-static-block">
+    <div class="home-banner"><a href="collection/bst-mo-mo.html">
+    </a><div class="home-banner-item"><a href="collection/bst-mo-mo.html">
+        <img src="https://routine.vn/pub/media/M_-_M_.png" alt="">
+        </a><a class="btn" style="text-transform: uppercase;" href="collection/bst-mo-mo.html">Xem ngay</a>
+    </div>
+
+    <a href="collection/essentials.html">
+        </a><div class="home-banner-item"><a href="collection/essentials.html">
+            <img src="https://routine.vn/pub/media/wysiwyg/N_NG_2_-_ESSential_1.png" alt="">
+            </a><a class="btn" style="text-transform: uppercase;" href="collection/essentials.html">Xem ngay</a>
+        </div>
+
+    <a href="collection/bst-ve-xoa-ve.html">
+        </a><div class="home-banner-item"><a href="collection/bst-ve-xoa-ve.html">
+            <img src="https://routine.vn/pub/media/wysiwyg/N_NG_-_V__1.png" alt="">
+            </a><a class="btn" style="text-transform: uppercase;" href="collection/bst-ve-xoa-ve.html">Xem ngay</a>
+        </div>
+
+    </div>
+</div>
+<div class="widget block block-static-block">
+    <div class="home-video">
+        <div class="home-video-banner"><picture><source srcset="https://routine.vn/media/wysiwyg/600X1065_1_.png" media="(max-width: 767px)"><img src="https://routine.vn/media/wysiwyg/NEW-072.jpg" alt=""></picture></div>
+    </div>
+</div>
+
+<div class="image-top">
+    <div class="row">
+        @foreach ($products as $product)
+            <div class="col-md-4" data-group="{{$product->catalog_id}}">
+                <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
+                        <div class="card-img-top" style="width: 350px, height :450px">
+                            <img src="/image/{{$product->image}}" alt="App landing" style="white-space: 100%, height: 100%" class="img-fluid new-products">
+                        </div>
+                        <div class="card-body">
+                        <h4 class="card-title">
+                            {{$product->name}}
+                        </h4>
+                        <p class="card-text text-muted">
+                            {{$product->content}}
                         </p>
                     </div>
-                </div>
-                <div class="row">
-                    @foreach ($products as $product)
-                        <div class="col-md-4" data-group="{{$product->catalog_id}}">
-                            <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
-                                    <div class="card-img-top" style="width: 350px, height :450px">
-                                        <img src="/image/{{$product->image}}" alt="App landing" style="white-space: 100%, height: 100%" class="img-fluid new-products">
-                                    </div>
-                                    <div class="card-body">
-                                    <h4 class="card-title">
-                                        {{$product->name}}
-                                    </h4>
-                                    <p class="card-text text-muted">
-                                        {{$product->content}}
-                                    </p>
-                                </div>
-                            </a> 	
-                        </div>
-                    @endforeach
-                </div>
+                </a> 	
             </div>
-      </section>
+        @endforeach
+    </div>
+</div>
+<section class="section" id="pages">
       <section class="section bg-light">
             <div class="line line-top"></div>
-            <div class="container-xl">
+            <div class="">
                 <div class="row justify-content-center">
                         <div class="col-md-8 col-lg-6">
                         <h2 class="text-center mb-4">
@@ -74,7 +88,7 @@
                 </div>
                 <div class="row">
                     @foreach ($products as $product)
-                    <div class="col-md-4">
+                        <div class="col-md-4">
                             <a href="/add-to-cart/{{$product->id}}" class="card border-0 mb-3 mb-md-0">
                                     <div class="card-img-top">
                                     <img src="/image/{{$product->image}}" alt="Carousel header" class="img-fluid">
@@ -180,7 +194,7 @@
                 <div class="row align-items-center">
                         <div class="col-md-6 col-lg-5 offset-lg-1 order-md-2">
                         <div class="img-effect img-effect-solid mb-5 mb-md-0">
-                                <img src="https://yevgenysim-turkey.github.io/incline/assets/img/47.jpg" class="img-fluid" alt="...">
+                                <img src="image/20221228150931.jpg" class="img-fluid" alt="...">
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 offset-lg-1 order-md-1" style="text-align: center;">
@@ -272,7 +286,7 @@
                 </div>
             </div>
       </section>
-      <section class="section">
+      {{-- <section class="section">
           <div class="container">
               <div class="row justify-content-center">
                   <div class="col-md-8 col-lg-6">
@@ -339,7 +353,7 @@
                     </div>
               </div>
            </div> 
-      </section>
+      </section> --}}
       <section class="section bg-light">
           <div class="container">
               <div class="row align-items-center justify-content-center">
@@ -361,10 +375,4 @@
       </section>
     </div>
 </section>
-<div class="container">
-    <div class="component">
-      <!-- Start Nav Structure -->
-      <button class="cn-button" id="cn-button">+</button>
-    </div>
-</div>
 @include('layouts.footer')

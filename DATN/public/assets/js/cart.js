@@ -20,7 +20,7 @@ $( document ).ready(function() {
                 window.location.reload();
             },
             error: function (data) {
-                console.log('Error:', data);
+                window.location.reload();
             }
         })
     })
@@ -71,7 +71,7 @@ $( document ).ready(function() {
         var comment=$(".comment").val();
         let id_reply = $(this).attr('data-id');
         let product_id=$(this).attr('alt');
-        let name = $('.name-comment').data('name');
+        let name = $(this).data('name');
         let token = $('.save_comment').attr('value');
         var vm=$(this);
         // Run Ajax
@@ -93,23 +93,22 @@ $( document ).ready(function() {
                 var html='<blockquote class="blockquote">\
                             <div class="comment-parent"><img  class="avatar" src="http://placeimg.com/40/40/animals">\
                                 <div class="comment-group" data-comment="" >\
-                                    <p class="name-comment" data-name >'+name+'</p>\
-                                    <p>'+comment+'</p>\
+                                    <p class="name-comment" style ="margin-left:12px; margin-top:12px" data-name >'+name+'</p>\
+                                    <p class="date-comment">2023-01-14 09:09:09</p>\
+                                    <p style ="margin-left:12px">'+comment+'</p>\
                                 </div> \
                             </div>\
                             <small class="mb-0"></small>\
                         </blockquote>\
                         <div class="button-post" style="margin-left: 64px; margin-bottom:12px;">\
-                            <a title="Likes" id="saveLike"  data-comment="" data-type="like" alt=""class="btn btn-sm btn-default btn-outline-primary btn_like ">\
-                                Like\
-                                <label class="like_count"></label>\
-                            </a>\
-                            <a id="reply" data-id="" class="btn btn-sm btn-default btn-outline-danger btn-show-form-reply ">\
+                            <a id="reply" data-id="{{$comment->id}}"  class="btn btn-sm btn-default btn-outline-danger">\
                                 Reply\
+                            </a>\
+                            <a id="saveLike" data-comment = "{{$comment->id}}" class="btn btn-sm btn-default btn-outline-success" data-type="comment" alt="{{ $product->id}}">\
+                                Like\
                             </a>\
                         </div>';
                 if(res.bool==true){
-                    console.log(123);
                     $(".comments").prepend(html);
                     $(".comment").val('');
                     $(".comment-count").text($('blockquote').length);
@@ -186,7 +185,6 @@ $( document ).ready(function() {
         let product_id=$('#saveLike').attr('alt');
         let token = $('.save_comment').attr('value')
         var vm=$(this);
-        // Run Ajax
         $.ajax({
             url:"/like",
             type:"POST",
@@ -199,11 +197,13 @@ $( document ).ready(function() {
             },
             success:function(result){
                 if(result.bool==true){
-                    console.log(result)
                     if(result.like_type==0){
                         vm.removeClass('active');
+                        window.location.reload();
+                        $(this).parents("parent-all").addClass("active");
                     }else if(result.like_type==1){
                         vm.addClass('active');
+                        window.location.reload();
                     }
                     else {
                         alert(result)
@@ -212,4 +212,43 @@ $( document ).ready(function() {
             }
         });
     })
+
+    $("#stepDown").click(function () {
+        let a =  $("#Hieu").attr('value')
+        let b = $("#form1").val()
+        console.log(a,b);
+        $("#total-amount").html(' <div class="col " id ="total-amount"> <strong>Số tiền:</strong> <br>'+a*b+'đ</div>')
+     })
+     $("#stepUp").click(function () {
+        let a =  $("#Hieu").attr('value')
+        let b = $("#form1").val()
+        $("#total-amount").html(' <div class="col " id ="total-amount"> <strong>Số tiền:</strong> <br>'+a*b+'đ</div>')      
+     })
+     $(".btn_success").on('click', function(){
+        let order_id = $(this).attr('value')
+        let a =  $("#Hieu").attr('value')
+        let b = $("#form1").val()
+        let token = $(this).data('abc')
+        let amount = a*b
+        let status = "buy"
+        var url = $(this).attr('href');
+        $.ajax({
+            url:"/transaction",
+            type:"POST",
+            dataType:'json',
+            data:{
+                order_id:order_id,
+                amount: amount,
+                status : status,
+                _token :token,
+                quantity : b
+            },
+            success:function(result){
+               if(result.bool == true) {
+                window.history.pushState({path:url},'',url);
+                window.location.reload();
+               }
+            }
+        });
+     })
 });

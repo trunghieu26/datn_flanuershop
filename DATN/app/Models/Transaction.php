@@ -11,6 +11,12 @@ class Transaction extends Model
         'user_id',
         'amount',
         'status',
+        'order_id',
+        'quantity'
     ];
     use HasFactory;
+
+    public function order(){
+        return $this->hasManyThrough(Order::class, Product::class, 'order_id', 'product_id', 'id');
+    }
 }
